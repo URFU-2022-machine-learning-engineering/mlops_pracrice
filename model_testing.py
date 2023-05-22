@@ -18,5 +18,5 @@ for filename in os.listdir("test"):
 
 # Проверка модели на данных из папки "test"
 for i, data in enumerate(test_data):
-    predicted = model.predict(data.reshape(1, -1))
+    predicted = model.predict(data.reshape(-1, 1))
     print(f"Для файла test/data_{i+1}.txt предсказанное значение: {predicted[0]}")

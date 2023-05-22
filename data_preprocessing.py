@@ -22,16 +22,16 @@ for filename in os.listdir("test"):
 scaler = StandardScaler()
 
 # Объединяем обучающую и тестовую выборки для подгонки scaler
-combined_data = np.concatenate(train_data + test_data, out=np.ndarray())
-scaler.fit([combined_data])
+combined_data = np.concatenate(train_data + test_data).reshape(-1, 1)
+scaler.fit(combined_data)
 
 # Преобразование обучающей выборки
 for i, data in enumerate(train_data):
-    train_data[i] = scaler.transform(data)
+    train_data[i] = scaler.transform(data.reshape(-1, 1))
 
 # Преобразование тестовой выборки
 for i, data in enumerate(test_data):
-    test_data[i] = scaler.transform(data)
+    test_data[i] = scaler.transform(data.reshape(-1, 1))
 
 # Сохранение преобразованных данных
 for i, data in enumerate(train_data):

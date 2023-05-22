@@ -13,8 +13,8 @@ for filename in os.listdir("train"):
         train_data.append(data)
 
 # Объединение всех обучающих примеров в один массив
-X_train = np.concatenate(train_data)
-y_train = np.arange(1, X_train.shape[0] + 1)  # Примерная зависимость для иллюстрации
+X_train = np.concatenate(train_data).reshape(-1, 1)
+y_train = np.arange(1, X_train.shape[0] + 1).reshape(-1, 1)  # Примерная зависимость для иллюстрации
 
 # Создание и обучение модели
 model = LinearRegression()
