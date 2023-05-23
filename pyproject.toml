@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "mlops-pracrice"
+version = "0.1.0"
+description = ""
+authors = ["Vladimir Katin <katin.v.v@gmail.com>"]
+readme = "README.md"
+packages = [{include = "mlops_pracrice"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+scikit-learn = "^1.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
