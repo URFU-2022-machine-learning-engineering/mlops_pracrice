@@ -1,0 +1,34 @@
+services:
+  jenkins:
+    image: jenkins/jenkins:latest
+    container_name: jenkins
+    expose:
+      - "50000"
+    ports:
+      - 8888:8080
+    volumes:
+      - ./jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JENKINS_SLAVE_AGENT_PORT=50000
+    networks:
+      - jenkins_net
+
+
+  agent:
+    image: jenkins/ssh-agent:jdk11
+    privileged: true
+    user: root
+    container_name: agent
+    expose:
+      - 22
+    environment:
+      - JENKINS_AGENT_SSH_PUBKEY=<YOUR SSH PUBLIC KEY HERE WITHOUT QUOTES>
+    networks:
+      - jenkins_net
+
+networks:
+  jenkins_net:
+
+volumes:
+  jenkins_home:

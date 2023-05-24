@@ -163,3 +163,5 @@ cython_debug/
 test/
 train/
 model.pkl
+data_test.csv
+data_train.csv
